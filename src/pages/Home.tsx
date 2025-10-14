@@ -82,7 +82,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Additional Services Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -122,6 +122,49 @@ const Home = () => {
                 </Button>
               </Card>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Services Section */}
+      <section className="py-16 md:py-24 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12">
+            Our <span className="gradient-text">Services</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Medical Records */}
+            <Card className="p-8 bg-gradient-to-br from-blue-500 to-blue-600 text-white border-0 hover:scale-105 transition-all duration-300">
+              <div className="mb-4">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Medical Records</h3>
+              <p className="text-white/90">Access and manage your medical records securely online.</p>
+            </Card>
+
+            {/* Prescription Refills */}
+            <Card className="p-8 bg-gradient-to-br from-green-500 to-green-600 text-white border-0 hover:scale-105 transition-all duration-300">
+              <div className="mb-4">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Prescription Refills</h3>
+              <p className="text-white/90">Request prescription refills and manage your medications easily.</p>
+            </Card>
+
+            {/* Health Monitoring */}
+            <Card className="p-8 bg-gradient-to-br from-purple-500 to-purple-600 text-white border-0 hover:scale-105 transition-all duration-300">
+              <div className="mb-4">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Health Monitoring</h3>
+              <p className="text-white/90">Track your health metrics and receive personalized insights.</p>
+            </Card>
           </div>
         </div>
       </section>

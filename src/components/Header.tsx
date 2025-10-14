@@ -9,17 +9,15 @@ const Header = () => {
 
   const navItems = [
     { name: "Home", path: "/" },
+    { name: "Doctors", path: "/doctors" },
     { name: "Reviews", path: "/reviews" },
     { name: "About", path: "/about" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full glass-card">
+    <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-background/60 border-b border-border/50">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link to="/" className="flex items-center space-x-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary">
-            <span className="text-xl font-bold text-white">C</span>
-          </div>
           <span className="text-2xl font-bold gradient-text">ClinicQ</span>
         </Link>
 
