@@ -9,7 +9,6 @@ import Schedule from "./pages/Schedule";
 import Reviews from "./pages/Reviews";
 import AIAssistant from "./pages/AIAssistant";
 import NotFound from "./pages/NotFound";
-import DownloadButton from "./components/DownloadButton";
 
 const queryClient = new QueryClient();
 
@@ -28,7 +27,6 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <DownloadButton />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
