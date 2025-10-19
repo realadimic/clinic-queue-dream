@@ -1,9 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Calendar, MessageSquare, Bell, Stethoscope, Bot } from "lucide-react";
+import { Calendar, MessageSquare, Bell, Stethoscope, Bot, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Home = () => {
   const features = [
@@ -30,12 +37,28 @@ const Home = () => {
     },
   ];
 
+  const doctors = [
+    { name: "Dr. Sarah Mitchell", specialty: "Cardiology", experience: "15 years", image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop" },
+    { name: "Dr. James Wilson", specialty: "Neurology", experience: "12 years", image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop" },
+    { name: "Dr. Emily Chen", specialty: "Pediatrics", experience: "10 years", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop" },
+    { name: "Dr. Michael Brown", specialty: "Orthopedics", experience: "18 years", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop" },
+    { name: "Dr. Lisa Anderson", specialty: "Dermatology", experience: "8 years", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" },
+  ];
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="fixed inset-0 pointer-events-none opacity-20 z-0">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-40 right-20 w-96 h-96 bg-secondary/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-accent/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+      </div>
+
       <Header />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 md:py-32">
+      <section className="relative overflow-hidden py-20 md:py-32 z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 animate-gradient" />
         <div className="container relative mx-auto px-4">
           <div className="mx-auto max-w-4xl text-center space-y-8">
@@ -58,7 +81,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-12 md:py-16 bg-muted/30 relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {features.map((feature, index) => (
@@ -82,8 +105,44 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Our Doctors Section */}
+      <section className="py-16 md:py-24 relative z-10">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Our <span className="gradient-text">Doctors</span>
+          </h2>
+          <Carousel className="w-full max-w-5xl mx-auto">
+            <CarouselContent className="-ml-4">
+              {doctors.map((doctor, index) => (
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="glass-card hover:scale-105 transition-all duration-300 border-primary/20 overflow-hidden">
+                    <div className="aspect-square overflow-hidden">
+                      <img 
+                        src={doctor.image} 
+                        alt={doctor.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h4 className="text-xl font-semibold mb-2 gradient-text">{doctor.name}</h4>
+                      <p className="text-muted-foreground mb-2">{doctor.specialty}</p>
+                      <div className="flex items-center gap-2 text-sm text-primary">
+                        <Award className="h-4 w-4" />
+                        <span>{doctor.experience} experience</span>
+                      </div>
+                    </div>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="glass-card -left-12" />
+            <CarouselNext className="glass-card -right-12" />
+          </Carousel>
+        </div>
+      </section>
+
       {/* Additional Services Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 relative z-10">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Additional <span className="gradient-text">Services</span>
@@ -127,7 +186,7 @@ const Home = () => {
       </section>
 
       {/* Our Services Section */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-16 md:py-24 bg-muted/30 relative z-10">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-12">
             Our <span className="gradient-text">Services</span>
