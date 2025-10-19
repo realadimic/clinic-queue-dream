@@ -38,11 +38,11 @@ const Home = () => {
   ];
 
   const doctors = [
-    { name: "Dr. Sarah Mitchell", specialty: "Cardiology", experience: "15 years", image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop" },
-    { name: "Dr. James Wilson", specialty: "Neurology", experience: "12 years", image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop" },
-    { name: "Dr. Emily Chen", specialty: "Pediatrics", experience: "10 years", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop" },
-    { name: "Dr. Michael Brown", specialty: "Orthopedics", experience: "18 years", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop" },
-    { name: "Dr. Lisa Anderson", specialty: "Dermatology", experience: "8 years", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" },
+    { name: "Dr. Sarah Mitchell", specialty: "Cardiology", experience: "15 years", image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&h=300&fit=crop" },
+    { name: "Dr. James Wilson", specialty: "Neurology", experience: "12 years", image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&h=300&fit=crop" },
+    { name: "Dr. Emily Chen", specialty: "Pediatrics", experience: "10 years", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=300&h=300&fit=crop" },
+    { name: "Dr. Michael Brown", specialty: "Orthopedics", experience: "18 years", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&h=300&fit=crop" },
+    { name: "Dr. Lisa Anderson", specialty: "Dermatology", experience: "8 years", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop" },
   ];
 
   return (
@@ -111,33 +111,40 @@ const Home = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Our <span className="gradient-text">Doctors</span>
           </h2>
-          <Carousel className="w-full max-w-5xl mx-auto">
-            <CarouselContent className="-ml-4">
-              {doctors.map((doctor, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="glass-card hover:scale-105 transition-all duration-300 border-primary/20 overflow-hidden">
-                    <div className="aspect-square overflow-hidden">
-                      <img 
-                        src={doctor.image} 
-                        alt={doctor.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h4 className="text-xl font-semibold mb-2 gradient-text">{doctor.name}</h4>
-                      <p className="text-muted-foreground mb-2">{doctor.specialty}</p>
-                      <div className="flex items-center gap-2 text-sm text-primary">
-                        <Award className="h-4 w-4" />
-                        <span>{doctor.experience} experience</span>
+          <div className="relative max-w-4xl mx-auto">
+            <Carousel 
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {doctors.map((doctor, index) => (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/3">
+                    <Card className="glass-card hover:scale-105 transition-all duration-300 border-primary/20 overflow-hidden h-full">
+                      <div className="aspect-square overflow-hidden">
+                        <img 
+                          src={doctor.image} 
+                          alt={doctor.name}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                    </div>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="glass-card -left-12" />
-            <CarouselNext className="glass-card -right-12" />
-          </Carousel>
+                      <div className="p-4">
+                        <h4 className="text-lg font-semibold mb-1 gradient-text">{doctor.name}</h4>
+                        <p className="text-sm text-muted-foreground mb-2">{doctor.specialty}</p>
+                        <div className="flex items-center gap-2 text-xs text-primary">
+                          <Award className="h-3 w-3" />
+                          <span>{doctor.experience}</span>
+                        </div>
+                      </div>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselNext className="glass-card" />
+            </Carousel>
+          </div>
         </div>
       </section>
 
