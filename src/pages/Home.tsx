@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Calendar, MessageSquare, Bell, Stethoscope, Bot, Award } from "lucide-react";
+import { Calendar, MessageSquare, Bell, Stethoscope, Bot, Award, MapPin, Phone, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -43,6 +43,49 @@ const Home = () => {
     { name: "Dr. Emily Chen", specialty: "Pediatrics", experience: "10 years", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=300&h=300&fit=crop" },
     { name: "Dr. Michael Brown", specialty: "Orthopedics", experience: "18 years", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&h=300&fit=crop" },
     { name: "Dr. Lisa Anderson", specialty: "Dermatology", experience: "8 years", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop" },
+  ];
+
+  const clinics = [
+    { 
+      name: "City Medical Center", 
+      address: "123 Main Street, Downtown", 
+      distance: "0.5 km", 
+      rating: "4.8",
+      hours: "24/7",
+      phone: "+1 234-567-8900",
+      specialties: ["Emergency", "General Medicine"],
+      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop"
+    },
+    { 
+      name: "Wellness Clinic", 
+      address: "456 Oak Avenue, Midtown", 
+      distance: "1.2 km", 
+      rating: "4.6",
+      hours: "8 AM - 8 PM",
+      phone: "+1 234-567-8901",
+      specialties: ["Cardiology", "Pediatrics"],
+      image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=400&h=300&fit=crop"
+    },
+    { 
+      name: "Healthcare Plus", 
+      address: "789 Pine Road, Uptown", 
+      distance: "2.0 km", 
+      rating: "4.7",
+      hours: "9 AM - 9 PM",
+      phone: "+1 234-567-8902",
+      specialties: ["Orthopedics", "Neurology"],
+      image: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400&h=300&fit=crop"
+    },
+    { 
+      name: "Family Health Center", 
+      address: "321 Elm Street, Riverside", 
+      distance: "2.5 km", 
+      rating: "4.5",
+      hours: "7 AM - 10 PM",
+      phone: "+1 234-567-8903",
+      specialties: ["Family Medicine", "Dermatology"],
+      image: "https://images.unsplash.com/photo-1632833239869-a37e3a5806d2?w=400&h=300&fit=crop"
+    },
   ];
 
   return (
@@ -136,6 +179,82 @@ const Home = () => {
                         <div className="flex items-center gap-2 text-xs text-primary">
                           <Award className="h-3 w-3" />
                           <span>{doctor.experience}</span>
+                        </div>
+                      </div>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselNext className="glass-card" />
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
+      {/* Clinics Near You Section */}
+      <section className="py-16 md:py-24 bg-muted/30 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Clinics <span className="gradient-text">Near You</span>
+            </h2>
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+              <MapPin className="h-4 w-4 mr-2" />
+              Change Location
+            </Button>
+          </div>
+          <div className="relative max-w-6xl mx-auto">
+            <Carousel 
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {clinics.map((clinic, index) => (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/3">
+                    <Card className="glass-card hover:scale-105 transition-all duration-300 border-primary/20 overflow-hidden h-full">
+                      <div className="aspect-video overflow-hidden">
+                        <img 
+                          src={clinic.image} 
+                          alt={clinic.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="p-5">
+                        <div className="flex items-start justify-between mb-3">
+                          <h4 className="text-lg font-bold gradient-text">{clinic.name}</h4>
+                          <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                            ⭐ {clinic.rating}
+                          </span>
+                        </div>
+                        <div className="space-y-2 mb-4">
+                          <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
+                            <span>{clinic.address}</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <Clock className="h-4 w-4 shrink-0" />
+                            <span>{clinic.hours}</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <Phone className="h-4 w-4 shrink-0" />
+                            <span>{clinic.phone}</span>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-1 mb-4">
+                          {clinic.specialties.map((specialty, idx) => (
+                            <span key={idx} className="text-xs bg-secondary/50 px-2 py-1 rounded">
+                              {specialty}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-semibold text-primary">{clinic.distance} away</span>
+                          <Button size="sm" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white">
+                            Book Now
+                          </Button>
                         </div>
                       </div>
                     </Card>
